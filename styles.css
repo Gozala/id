@@ -1,0 +1,289 @@
+:root {
+  --primary-color: #536dfe;
+  --light-grey: rgba(0, 0, 0, 0.2);
+  --avatar-size: 128px;
+
+  --select-avatar-size: 64px;
+
+  --gradient-background: linear-gradient(to right, #576574, #f1f2f6);
+  --box-shadow: 0px 0px 10px 1px #888;
+
+  --page-color: #5743ff;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--background-color, #eaebed);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  --background-color: #ffffff;
+  --foreground-color: #536dfe;
+  --foreground-color-pressed: #2a3780;
+}
+
+.field {
+  border: none;
+  outline: none;
+  text-align: inherit;
+}
+
+.profile-card {
+  position: relative;
+  width: 300px;
+  height: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f6fa;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#profile-name {
+  font-weight: 500;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.88);
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#profile-bio {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.64);
+  line-height: 18px;
+}
+
+.field[contenteditable="true"]:empty::before {
+  display: inline;
+  content: attr(placeholder);
+  opacity: 0.8;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.64);
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+a:not(.button):hover {
+  color: var(--foreground-color, #536dfe);
+}
+
+.center {
+  padding: 64px;
+  max-width: 512px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+
+  background-color: var(--foreground-color, #536dfe);
+  border-radius: 24px;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.button:focus,
+.button:active {
+  background-color: var(--foreground-color-pressed, #2a3780);
+}
+
+.card {
+  user-select: initial;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 24px;
+  text-align: left !important;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.card-title {
+  margin: 0;
+}
+
+.card-body {
+  white-space: pre-line;
+  line-height: 1.2rem;
+  margin-bottom: 0;
+}
+
+.muted {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.45);
+  margin-left: 4px;
+}
+
+.muted::before {
+  content: " · ";
+}
+
+.link,
+.dat-link {
+  color: var(--foreground-color, #536dfe) !important;
+}
+
+.link:hover,
+.dat-link:hover {
+  color: rgba(0, 0, 0, 0.88) !important;
+}
+
+.dat-link::before {
+  content: "dat";
+  border-radius: 2px;
+  padding: 0 2px;
+  text-decoration: none !important;
+  color: white;
+  margin-right: 4px;
+  background-color: var(--foreground-color, #536dfe);
+}
+
+.dat-link.dat-profile::before {
+  content: "@";
+}
+
+.dat-link:hover::before {
+  background-color: rgba(0, 0, 0, 0.88);
+}
+
+#profile-bio,
+#profile-summary {
+  margin-bottom: 32px;
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+main.profile-selector {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.profile-selector .selector {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.select.profile {
+  display: flex;
+  height: var(--select-avatar-size);
+  line-height: var(--select-avatar-size);
+  cursor: pointer;
+  margin: 5px;
+}
+
+.select.profile .avatar {
+  height: var(--select-avatar-size);
+  width: var(--select-avatar-size);
+  border-radius: var(--select-avatar-size);
+  position: relative;
+  overflow: hidden;
+}
+
+.select.profile:hover .avatar::before {
+  background-color: var(--primary-color);
+}
+
+.select.profile .label {
+  padding: 0 10px;
+  font-size: 1.2em;
+}
+
+.avatar {
+  background-size: cover;
+  border: none;
+  color: white;
+
+  display: inline-block;
+  padding: 0;
+  object-fit: cover;
+}
+
+img.avatar::before {
+  content: " ";
+  display: inherit;
+  width: inherit;
+  height: inherit;
+  background-color: var(--light-grey);
+  mask: url(icons/fontawesome/svgs/solid/user-circle.svg) no-repeat 50% 50%;
+  -webkit-mask: url(icons/fontawesome/svgs/solid/user-circle.svg) no-repeat 50%
+    50%;
+}
+
+#profile-avatar {
+  position: relative;
+  height: var(--avatar-size);
+  width: var(--avatar-size);
+  min-height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  max-width: var(--avatar-size);
+  max-height: var(--avatar-size);
+  border-radius: var(--avatar-size);
+  line-height: var(--avatar-size);
+  background-size: cover;
+  margin: 0 auto 24px;
+  border: none;
+  color: white;
+
+  display: inline-block;
+  overflow: hidden;
+  font-size: 10em;
+  justify-content: space-around;
+  vertical-align: middle;
+  font-family: monospace;
+  padding: 0;
+  object-fit: cover;
+}
+
+#profile-avatar::after {
+  content: " ";
+  display: inherit;
+  width: inherit;
+  height: inherit;
+  background-color: var(--light-grey);
+  mask: url(icons/fontawesome/svgs/solid/user-circle.svg) no-repeat 50% 50%;
+  -webkit-mask: url(icons/fontawesome/svgs/solid/user-circle.svg) no-repeat 50%
+    50%;
+}
+
+#profile-avatar:hover,
+#profile-avatar.dragover {
+  background-color: var(--primary-color);
+  mask: url(icons/fontawesome/svgs/solid/plus-circle.svg) no-repeat 50% 50%;
+  -webkit-mask: url(icons/fontawesome/svgs/solid/plus-circle.svg) no-repeat 50%
+    50%;
+}
+
+#profile-avatar-upload {
+  display: none;
+}
+
+#replying-to {
+  margin-top: 1em;
+  margin-bottom: 0;
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,64 @@
+// @flow strict
+
+declare export opaque type Node<a>
+declare export opaque type Attribute<a>
+export type KeyedNode<a> = [string, Node<a>]
+
+declare export function node<a>(
+  nodeName: string,
+  attributes?: Attribute<a>[],
+  children?: Node<a>[]
+): Node<a>
+
+declare export function keyedNode<a>(
+  nodeName: string,
+  attributes?: Attribute<a>[],
+  children?: KeyedNode<a>[]
+): Node<a>
+
+declare export function keyedNodeNS<a>(
+  namespace: string,
+  nodeName: string,
+  attributes?: Attribute<a>[],
+  children?: KeyedNode<a>[]
+): Node<a>
+
+declare export function nodeNS<a>(
+  namespace: string,
+  nodeName: string,
+  attributes?: Attribute<a>[],
+  children?: Node<a>[]
+): Node<a>
+
+declare export function text<a>(string): Node<a>
+
+declare export function property<a>(name: string, value: mixed): Attribute<a>
+declare export function attribute<a>(
+  name: string,
+  value: null | string
+): Attribute<a>
+declare export function attributeNS<a>(
+  namespace: string,
+  name: string,
+  value: string | boolean | number | null | void
+): Attribute<a>
+declare export function style<a>(string, string): Attribute<a>
+
+export interface Handler<a> {
+  decode<event: Event>(
+    event
+  ): { value: a, stopPropagation?: boolean, preventDefault?: boolean };
+}
+
+declare export function on<a>(string, Handler<a>): Attribute<a>
+
+declare export opaque type Delta
+declare interface Port<a> { send(a): mixed }
+declare export function diff<a>(Node<a>, Node<a>): Delta
+declare export function patch<a>(
+  root: EventTarget,
+  current: Node<a>,
+  delta: Delta,
+  port: Port<a>
+): void
+declare export function virtualize<a>(EventTarget): Node<a>
