@@ -1,4 +1,5 @@
 {
   "title": "id",
-  "description": "User identity"
+  "description": "User identity",
+  "fallback_page": "index.html"
 }

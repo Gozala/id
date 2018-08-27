@@ -1,7 +1,20 @@
 // @flow strict
 
-declare export opaque type Node<a>
-declare export opaque type Attribute<a>
+export interface Doc<a> {
+  title: string;
+  body: Node<a>;
+
+  map<b>((a) => b): Doc<b>;
+}
+
+declare export class Node<a> {
+  settings(): Attribute<a>[];
+  children(): Node<a>[];
+  map<b>((a) => b): Node<b>;
+}
+declare export class Attribute<a> {
+  map<b>((a) => b): Attribute<b>;
+}
 export type KeyedNode<a> = [string, Node<a>]
 
 declare export function node<a>(
@@ -31,6 +44,7 @@ declare export function nodeNS<a>(
 ): Node<a>
 
 declare export function text<a>(string): Node<a>
+declare export function doc<a>(title: string, body: Node<a>): Doc<a>
 
 declare export function property<a>(name: string, value: mixed): Attribute<a>
 declare export function attribute<a>(
@@ -44,16 +58,26 @@ declare export function attributeNS<a>(
 ): Attribute<a>
 declare export function style<a>(string, string): Attribute<a>
 
-export interface Handler<a> {
-  decode<event: Event>(
-    event
-  ): { value: a, stopPropagation?: boolean, preventDefault?: boolean };
+export type Decoder<a, b> = {
+  decode(a): b
 }
 
-declare export function on<a>(string, Handler<a>): Attribute<a>
+export type DecodeEvent<a> = {
+  message: ?a,
+  stopPropagation?: boolean,
+  preventDefault?: boolean
+}
+
+declare export function on<a>(
+  string,
+  Decoder<
+    Event | DragEvent | MouseEvent | KeyboardEvent | UIEvent,
+    DecodeEvent<a>
+  >
+): Attribute<a>
 
 declare export opaque type Delta
-declare interface Port<a> { send(a): mixed }
+export interface Port<a> { send(a): mixed }
 declare export function diff<a>(Node<a>, Node<a>): Delta
 declare export function patch<a>(
   root: EventTarget,
