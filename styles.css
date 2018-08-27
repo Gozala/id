@@ -255,7 +255,7 @@ img.avatar::before {
   object-fit: cover;
 }
 
-#profile-avatar::after {
+#profile-avatar::before {
   content: " ";
   display: inherit;
   width: inherit;
