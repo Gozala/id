@@ -62,7 +62,14 @@ export type Decoder<a, b> = {
   decode(a): b
 }
 
-export type DecodeEvent<a> = {
+export type EncodedEvent =
+  | Event
+  | DragEvent
+  | MouseEvent
+  | KeyboardEvent
+  | UIEvent
+
+export type DecodedEvent<a> = {
   message: ?a,
   stopPropagation?: boolean,
   preventDefault?: boolean
@@ -70,10 +77,7 @@ export type DecodeEvent<a> = {
 
 declare export function on<a>(
   string,
-  Decoder<
-    Event | DragEvent | MouseEvent | KeyboardEvent | UIEvent,
-    DecodeEvent<a>
-  >
+  Decoder<EncodedEvent, DecodedEvent<a>>
 ): Attribute<a>
 
 declare export opaque type Delta
