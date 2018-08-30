@@ -44,7 +44,7 @@ body {
   color: rgba(0, 0, 0, 0.64);
   line-height: 18px;
   width: 450px;
-  height: 200px;
+  min-height: 80px;
 }
 
 .field[contenteditable="true"]:empty::before {
@@ -214,6 +214,11 @@ article {
     50%;
 }
 
+.picker {
+  outline: none;
+}
+
+.profile .card :focus-within .avatar,
 .profile .card .avatar:hover,
 .profile.dragover .card .avatar {
   background-color: var(--primary-color);
@@ -224,6 +229,14 @@ article {
 
 .profile .card .avatar-upload {
   display: none;
+}
+
+.profile .card .save.button {
+  visibility: hidden;
+}
+
+.profile.edited .card .save.button {
+  visibility: visible;
 }
 
 .hidden {
