@@ -2,6 +2,7 @@
   --primary-color: #536dfe;
   --light-grey: rgba(0, 0, 0, 0.2);
   --avatar-size: 128px;
+  --brand-icon-size: 24px;
 
   --select-avatar-size: 64px;
 
@@ -203,7 +204,7 @@ article {
   align-self: center;
 }
 
-.profile .card .avatar::before {
+.own.profile .card .avatar::before {
   content: " ";
   display: inherit;
   width: inherit;
@@ -218,9 +219,9 @@ article {
   outline: none;
 }
 
-.profile .card :focus-within .avatar,
-.profile .card .avatar:hover,
-.profile.dragover .card .avatar {
+.own.profile .card :focus-within .avatar,
+.own.profile .card .avatar:hover,
+.own.profile.dragover .card .avatar {
   background-color: var(--primary-color);
   mask: url(icons/fontawesome/svgs/solid/plus-circle.svg) no-repeat 50% 50%;
   -webkit-mask: url(icons/fontawesome/svgs/solid/plus-circle.svg) no-repeat 50%
@@ -237,6 +238,124 @@ article {
 
 .profile.edited .card .save.button {
   visibility: visible;
+}
+
+.profile .card .identities {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.profile .card .identities .identity {
+  display: inline-flex;
+}
+
+.profile .card .identities .identity::before {
+  height: var(--brand-icon-size);
+  width: var(--brand-icon-size);
+  margin: 5px;
+}
+
+.profile .card .button {
+  margin: 16px 0;
+}
+
+.pgp.identity::before {
+  content: url("icons/fontawesome/svgs/solid/key.svg");
+}
+.github.identity::before {
+  content: url("icons/fontawesome/svgs/brands/github.svg");
+}
+.twitter.identity::before {
+  content: url("icons/fontawesome/svgs/brands/twitter.svg");
+}
+.web.identity::before {
+  content: url("icons/fontawesome/svgs/solid/globe.svg");
+}
+.bitcoin.identity::before {
+  content: url("icons/fontawesome/svgs/brands/bitcoin.svg");
+}
+.dat.identity::before {
+  content: url("icons/datproject/dat-logo.svg");
+}
+.fritter.identity::before {
+  content: url("icons/fontawesome/svgs/solid/comment-alt.svg");
+}
+.facebook.identity::before {
+  content: url("icons/fontawesome/svgs/brands/facebook.svg");
+}
+.ethereum.identity::before {
+  content: url("icons/fontawesome/svgs/brands/ethereum.svg");
+}
+.reddit.identity::before {
+  content: url("icons/fontawesome/svgs/brands/reddit.svg");
+}
+.hacker-news.identity::before {
+  content: url("icons/fontawesome/svgs/brands/hacker-news-square.svg");
+}
+.gitlab.identity::before {
+  content: url("icons/fontawesome/svgs/brands/gitlab.svg");
+}
+.gitlab.identity::before {
+  content: url("icons/fontawesome/svgs/brands/gitlab.svg");
+}
+.keybase.identity::before {
+  content: url("icons/fontawesome/svgs/brands/keybase.svg");
+}
+.instagram.identity::before {
+  content: url("icons/fontawesome/svgs/brands/instagram.svg");
+}
+.linkedin.identity::before {
+  content: url("icons/fontawesome/svgs/brands/linkedin.svg");
+}
+.mastodon.identity::before {
+  content: url("icons/fontawesome/svgs/brands/mastodon.svg");
+}
+.medium.identity::before {
+  content: url("icons/fontawesome/svgs/brands/medium.svg");
+}
+.npm.identity::before {
+  content: url("icons/fontawesome/svgs/brands/npm.svg");
+}
+.patreon.identity::before {
+  content: url("icons/fontawesome/svgs/brands/patreon.svg");
+}
+.paypal.identity::before {
+  content: url("icons/fontawesome/svgs/brands/paypal.svg");
+}
+.pinterest.identity::before {
+  content: url("icons/fontawesome/svgs/brands/pinterest.svg");
+}
+.skype.identity::before {
+  content: url("icons/fontawesome/svgs/brands/skype.svg");
+}
+.snapchat.identity::before {
+  content: url("icons/fontawesome/svgs/brands/snapchat.svg");
+}
+.soundcloud.identity::before {
+  content: url("icons/fontawesome/svgs/brands/soundcloud.svg");
+}
+.spotify.identity::before {
+  content: url("icons/fontawesome/svgs/brands/spotify.svg");
+}
+.stack-overflow.identity::before {
+  content: url("icons/fontawesome/svgs/brands/stack-overflow.svg");
+}
+.telegram.identity::before {
+  content: url("icons/fontawesome/svgs/brands/telegram.svg");
+}
+.whatsapp.identity::before {
+  content: url("icons/fontawesome/svgs/brands/whatsapp.svg");
+}
+.lastfm.identity::before {
+  content: url("icons/fontawesome/svgs/brands/lastfm.svg");
+}
+.pocket.identity::before {
+  content: url("icons/fontawesome/svgs/brands/get-pocket.svg");
+}
+.bitbucket.identity::before {
+  content: url("icons/fontawesome/svgs/brands/bitbucket.svg");
 }
 
 .hidden {
