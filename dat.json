@@ -1,5 +1,10 @@
 {
   "title": "id",
   "description": "User identity",
-  "fallback_page": "index.html"
+  "fallback_page": "index.html",
+  "experimental": {
+    "apis": [
+      "globalFetch"
+    ]
+  }
 }
